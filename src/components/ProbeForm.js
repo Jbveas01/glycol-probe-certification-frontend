@@ -1,10 +1,8 @@
-import React from "react";
-
-const ProbeForm = ({ newProbe, onChange, onSubmit }) => {
+const ProbeForm = ({ newSerial, onChange, onSubmit, placeHolder }) => {
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <input value={newProbe} onChange={onChange} />
+        <input value={newSerial} onChange={onChange} placeholder={placeHolder}/>
         <button type="submit">Submit data</button>
       </form>
     </div>

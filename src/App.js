@@ -1,22 +1,28 @@
 import { useState } from "react";
 import ProbeForm from "./components/ProbeForm";
+
 function App() {
-  const [newProbe, setProbe] = useState("Enter probe data");
-  const handleProbeChange = (event) => {
-    setProbe(event.target.value);
+  const [newSerial, setSerial] = useState("");
+
+  ///Handle serial number change
+  const handleSerialChange = (event) => {
+    setSerial(event.target.value);
+    console.log(event.target.name)
   };
+  ///Handles Submitting the probe into the database
   const submitProbe = (event) => {
     event.preventDefault();
-    console.log(newProbe);
-    setProbe("");
+    console.log(newSerial);
+    setSerial("");
   };
 
   return (
     <div className="App">
       <ProbeForm
-        newProbe={newProbe}
-        onChange={handleProbeChange}
+        newSerial={newSerial}
+        onChange={handleSerialChange}
         onSubmit={submitProbe}
+        placeHolder='Enter Probe Serial#'
       />
     </div>
   );
