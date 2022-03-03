@@ -7,12 +7,13 @@ function App() {
   ///Handle serial number change
   const handleSerialChange = (event) => {
     setSerial(event.target.value);
-    console.log(event.target.name)
   };
   ///Handles Submitting the probe into the database
   const submitProbe = (event) => {
     event.preventDefault();
-    console.log(newSerial);
+    const data = new FormData(event.target)
+    console.log(data.get('serial'))
+    console.log(data.get('certDate'))
     setSerial("");
   };
 
