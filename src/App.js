@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ProbeForm from "./components/ProbeForm";
+import Dashboard from "./views/Dashboard";
 
 function App() {
   const [newSerial, setSerial] = useState("");
@@ -47,6 +48,7 @@ function App() {
         handleManufChange={handleManufChange}
         onSubmit={submitProbe}
       />
+      <Dashboard probeList={probeList} />
     </div>
   );
 }

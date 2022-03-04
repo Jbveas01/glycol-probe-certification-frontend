@@ -1,6 +1,8 @@
-const Dashboard = () => {
+const Dashboard = ({ probeList }) => {
   return (
-    <div>Dashboard</div>
+    <div>Dashboard
+      <ul>{probeList.map(probe => <li>{probe.serial}</li>)}</ul>
+    </div>
   )
 }
 
