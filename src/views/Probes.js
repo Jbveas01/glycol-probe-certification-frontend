@@ -1,7 +1,5 @@
 const Probes = () => {
-  return (
-    <div>Probes</div>
-  )
-}
+  return <div>Probes</div>;
+};
 
-export default Probes
+export default Probes;
