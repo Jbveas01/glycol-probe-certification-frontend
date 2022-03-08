@@ -28,6 +28,8 @@ function App() {
   const handleCertChange = (event) => setCert(event.target.value);
   const handleLotChange = (event) => setLot(event.target.value);
   const handleManufChange = (event) => setManuf(event.target.value);
+  const handleFilterChange = (event) => setFilter(event.target.value);
+  const handleDeleteChange = (event) => setDeleteProbe(event.target.value);
 
   ///Handles Submitting the probe into the database
   const submitProbe = async (event) => {
@@ -55,20 +57,7 @@ function App() {
     setTrigger(!useTrigger);
   };
 
-  const filterProbes = () => {
-    const filteredProbes = probeList.filter((probe) =>
-      probe._id.includes(filter)
-    );
-    console.log(filteredProbes);
-  };
-  const changeFilter = (event) => {
-    setFilter(event.target.value);
-  };
-  const changeDelete = (event) => {
-    setDeleteProbe(event.target.value);
-  };
-
-  const handleDelete = async (event) => {
+  const submitDelete = async (event) => {
     event.preventDefault();
     await axios
       .delete(`http://localhost:3001/api/probes/${deleteProbe}`)
@@ -77,6 +66,13 @@ function App() {
       });
     setDeleteProbe("");
     setTrigger(!useTrigger);
+  };
+
+  const filterProbes = () => {
+    const filteredProbes = probeList.filter((probe) =>
+      probe._id.includes(filter)
+    );
+    console.log(filteredProbes);
   };
 
   return (
@@ -103,10 +99,10 @@ function App() {
       <Dashboard
         probeList={probeList}
         filter={filter}
-        handleChange={changeFilter}
+        handleChange={handleFilterChange}
       />
-      <form onSubmit={handleDelete}>
-        <input value={deleteProbe} onChange={changeDelete}></input>
+      <form onSubmit={submitDelete}>
+        <input value={deleteProbe} onChange={handleDeleteChange}></input>
         <button type="submit">Delete probe</button>
       </form>
     </div>
