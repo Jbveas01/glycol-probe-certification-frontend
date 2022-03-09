@@ -1,0 +1,76 @@
+.nav-link{
+    color: white;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    margin: 2px;
+    text-decoration: none;
+    text-align: left;
+    border: solid 1px black;
+}
+.nav-link.active{
+    background-color: blue;
+    color: black
+}
+.navbar{
+    width: 200px;
+    position: fixed;
+    top: 100px;
+    overflow-x: hidden;
+    z-index: 1;
+}
+
+.nav-link {
+  background-image: linear-gradient(#42A1EC, #0070C9);
+  border: 1px solid #0077CC;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: inline-flex;
+  flex-direction: column;
+  font-family: "SF Pro Text","SF Pro Icons","AOS Icons","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  height: 52px;
+  justify-content: center;
+  min-width: 30px;
+  padding: 4px 15px;
+  text-align: center;
+  width: 95%;
+}
+
+.nav-link:disabled {
+  cursor: default;
+  opacity: .3;
+}
+
+.nav-link:hover {
+  background-image: linear-gradient(#51A9EE, #147BCD);
+  border-color: #1482D0;
+  text-decoration: none;
+}
+
+.nav-link:active {
+  background-image: linear-gradient(#3D94D9, #0067B9);
+  border-color: #006DBC;
+  outline: none;
+}
+
+.nav-link:focus {
+  box-shadow: rgba(131, 192, 253, 0.5) 0 0 0 3px;
+  outline: none;
+}
+
+
+
+
+@media (max-width: 420px) {
+  .button-84 {
+    height: 48px;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+
+  }

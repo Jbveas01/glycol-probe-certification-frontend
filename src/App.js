@@ -4,6 +4,7 @@ import Dashboard from "./views/Dashboard";
 import Navbar from "./components/Navbar";
 import axios from "axios";
 import { Route, Routes } from "react-router-dom";
+import "./App.css"
 
 function App() {
   const [newSerial, setSerial] = useState("");
@@ -78,33 +79,35 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Routes>
-        <Route
-          path="/probes"
-          element={
-            <ProbeForm
-              newSerial={newSerial}
-              newCert={newCert}
-              newLot={newLot}
-              newManuf={newManuf}
-              handleLotChange={handleLotChange}
-              handleCertChange={handleCertChange}
-              handleSerialChange={handleSerialChange}
-              handleManufChange={handleManufChange}
-              onSubmit={submitProbe}
-            />
-          }
-        ></Route>
-      </Routes>
-      <Dashboard
-        probeList={probeList}
-        filter={filter}
-        handleChange={handleFilterChange}
-      />
-      <form onSubmit={submitDelete}>
-        <input value={deleteProbe} onChange={handleDeleteChange}></input>
-        <button type="submit">Delete probe</button>
-      </form>
+      <div className="main">
+        <Routes>
+          <Route
+            path="/probes"
+            element={
+              <ProbeForm
+                newSerial={newSerial}
+                newCert={newCert}
+                newLot={newLot}
+                newManuf={newManuf}
+                handleLotChange={handleLotChange}
+                handleCertChange={handleCertChange}
+                handleSerialChange={handleSerialChange}
+                handleManufChange={handleManufChange}
+                onSubmit={submitProbe}
+              />
+            }
+          ></Route>
+        </Routes>
+        <Dashboard
+          probeList={probeList}
+          filter={filter}
+          handleChange={handleFilterChange}
+        />
+        <form onSubmit={submitDelete}>
+          <input value={deleteProbe} onChange={handleDeleteChange}></input>
+          <button type="submit">Delete probe</button>
+        </form>
+      </div>
     </div>
   );
 }
