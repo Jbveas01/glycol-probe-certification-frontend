@@ -1,27 +1,49 @@
 const Dashboard = ({ probeList, filter, handleChange }) => {
-  const filteredProbes = probeList.filter((probe) => probe._id.includes(filter))
+  const filteredProbes = probeList.filter((probe) =>
+    probe._id.includes(filter)
+  );
   return (
     <div>
       Dashboard
       <input value={filter} onChange={handleChange} />
-      <ul>
-        {filteredProbes.map(probe => <li>{probe._id}</li>)}
-      </ul>
       <table>
-        <tr>
-          {Object.keys(filteredProbes[0]).map((key) => (
-            <th>{key}</th>
-          ))}
-        </tr>
-        <tr>
-          {filteredProbes.map((probe) => (
-            <tr>
-              {Object.values(probe).map((val) => (
-                <td>{val}</td>
-              ))}
-            </tr>
-          ))}
-        </tr>
+        <tbody>
+          <th>Serial #</th>
+          <th>Lot #</th>
+          <th>Manufacture Date</th>
+          <th>Certification Date</th>
+          <th>Expiration Date</th>
+          {filteredProbes.map((probe) => {
+            const {
+              _id,
+              lot,
+              manufactureDate,
+              certificationDate,
+              expirationDate,
+            } = probe;
+            return (
+              <tr key={_id}>
+                <td>{_id}</td>
+                <td>{lot}</td>
+                <td>
+                  {new Date(manufactureDate).toLocaleDateString("en-US", {
+                    timeZone: "UTC",
+                  })}
+                </td>
+                <td>
+                  {new Date(certificationDate).toLocaleDateString("en-US", {
+                    timeZone: "UTC",
+                  })}
+                </td>
+                <td>
+                  {new Date(expirationDate).toLocaleDateString("en-US", {
+                    timeZone: "UTC",
+                  })}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
     </div>
   );
