@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import axios from "axios";
 import { Route, Routes } from "react-router-dom";
 import "./App.css"
+import Footer from "./components/Footer";
 
 function App() {
   const [newSerial, setSerial] = useState("");
@@ -19,7 +20,6 @@ function App() {
   useEffect(() => {
     axios.get("http://localhost:3001/api/probes").then((res) => {
       console.log("Probes Grabbed");
-      console.log(res.data);
       setProbeList(res.data);
     });
   }, [useTrigger]);
@@ -69,13 +69,6 @@ function App() {
     setTrigger(!useTrigger);
   };
 
-  const filterProbes = () => {
-    const filteredProbes = probeList.filter((probe) =>
-      probe._id.includes(filter)
-    );
-    console.log(filteredProbes);
-  };
-
   return (
     <div className="App">
       <Navbar />
@@ -108,7 +101,9 @@ function App() {
           <button type="submit">Delete probe</button>
         </form>
       </div>
+      <Footer />
     </div>
+
   );
 }
 

@@ -1,24 +1,11 @@
-.nav-link{
-    color: white;
-    background-color: blue;
-    display: flex;
-    flex-direction: column;
-    font-size: 1.5rem;
-    margin: 2px;
-    text-decoration: none;
-    text-align: left;
-    border: solid 1px black;
-}
-.nav-link.active{
-    background-color: blue;
-    color: black
-}
 .navbar{
-    width: 200px;
-    position: fixed;
-    top: 100px;
-    overflow-x: hidden;
-    z-index: 1;
+  width: 200px;
+  position: fixed;
+  top: 100px;
+  left: 0px;
+  overflow-x: hidden;
+  height: 100%;
+  padding-left: 10px;
 }
 
 .nav-link {
@@ -35,7 +22,9 @@
   height: 52px;
   justify-content: center;
   min-width: 30px;
+  margin-top: 5px;
   padding: 4px 15px;
+  text-decoration: none;
   text-align: center;
   width: 95%;
 }
@@ -51,24 +40,16 @@
   text-decoration: none;
 }
 
-.nav-link:active {
+.nav-link.active {
   background-image: linear-gradient(#3D94D9, #0067B9);
   border-color: #006DBC;
   outline: none;
+  color: black
 }
 
 .nav-link:focus {
   box-shadow: rgba(131, 192, 253, 0.5) 0 0 0 3px;
   outline: none;
-}
-
-
-
-
-@media (max-width: 420px) {
-  .button-84 {
-    height: 48px;
-  }
 }
 
 @media only screen and (min-width: 600px) {
