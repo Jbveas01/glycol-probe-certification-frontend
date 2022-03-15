@@ -1,24 +1,25 @@
-.navbar{
+.navbar {
   width: 200px;
   position: fixed;
-  top: 100px;
+  top: 0px;
   left: 0px;
   overflow-x: hidden;
   height: 100%;
   padding-left: 10px;
+  padding-top: 130px;
+  background-color: white;
 }
 
 .nav-link {
-  background-image: linear-gradient(#42A1EC, #0070C9);
-  border: 1px solid #0077CC;
   border-radius: 4px;
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: #0067b9;
   display: inline-flex;
   flex-direction: column;
-  font-family: "SF Pro Text","SF Pro Icons","AOS Icons","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue",
+    Helvetica, Arial, sans-serif;
   font-size: 17px;
-  font-weight: 400;
+  font-weight: 600;
   height: 52px;
   justify-content: center;
   min-width: 30px;
@@ -31,20 +32,23 @@
 
 .nav-link:disabled {
   cursor: default;
-  opacity: .3;
+  opacity: 0.3;
 }
 
 .nav-link:hover {
-  background-image: linear-gradient(#51A9EE, #147BCD);
-  border-color: #1482D0;
+  background-color: #0067b9;
+  border-radius: 15px;
+  border-color: #1482d0;
   text-decoration: none;
+  color: white;
 }
 
 .nav-link.active {
-  background-image: linear-gradient(#3D94D9, #0067B9);
-  border-color: #006DBC;
+  background-color: #0067b9;
+  border-color: #006dbc;
+  border-radius: 15px;
   outline: none;
-  color: black
+  color: white;
 }
 
 .nav-link:focus {
@@ -53,5 +57,4 @@
 }
 
 @media only screen and (min-width: 600px) {
-
-  }
+}

@@ -4,8 +4,9 @@ import Dashboard from "./views/Dashboard";
 import Navbar from "./components/Navbar";
 import axios from "axios";
 import { Route, Routes } from "react-router-dom";
-import "./App.css"
+import "./App.css";
 import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 function App() {
   const [newSerial, setSerial] = useState("");
@@ -52,9 +53,15 @@ function App() {
     setCert("");
     setLot("");
     setManuf("");
-    await axios.post("http://localhost:3001/api/probes", probe).then((res) => {
-      console.log(res);
-    });
+    await axios
+      .post("http://localhost:3001/api/probes", probe)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+        console.log(error.response.data);
+      });
     setTrigger(!useTrigger);
   };
 
@@ -71,6 +78,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <Navbar />
       <div className="main">
         <Routes>
@@ -103,7 +111,6 @@ function App() {
       </div>
       <Footer />
     </div>
-
   );
 }
 
