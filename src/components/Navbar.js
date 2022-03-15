@@ -4,14 +4,14 @@ import "./Navbar.css";
 const Navbar = ({ isActive }) => {
   return (
     <div className="navbar">
-      <NavLink to="/probes" className={`nav-link ${isActive ? "active" : ""}`}>
-        Probes
+      <NavLink to="/dashboard" className={`nav-link ${isActive ? "active" : ""}`}>
+        Dashboard
       </NavLink>
       <NavLink
-        to="/dashboard"
+        to="/probes"
         className={`nav-link ${isActive ? "active" : ""}`}
       >
-        Dashboard
+        Probes
       </NavLink>
       <NavLink
         to="/shipping"
