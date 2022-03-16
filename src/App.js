@@ -17,6 +17,8 @@ function App() {
   const [useTrigger, setTrigger] = useState(false);
   const [probeList, setProbeList] = useState([]);
   const [deleteProbe, setDeleteProbe] = useState("");
+  const [success, setSuccess] = useState("hidden");
+  const [formError, setFormError] = useState("");
 
   useEffect(() => {
     axios.get("http://localhost:3001/api/probes").then((res) => {
@@ -49,31 +51,48 @@ function App() {
         )
       ),
     };
-    setSerial("");
-    setCert("");
-    setLot("");
-    setManuf("");
     await axios
       .post("http://localhost:3001/api/probes", probe)
       .then((res) => {
         console.log(res);
+        setSerial("");
+        setCert("");
+        setLot("");
+        setManuf("");
+        setFormError(`Probe ${probe._id} added to the database!`);
+        setSuccess("submit-success");
+        setTrigger(!useTrigger);
       })
       .catch((error) => {
         console.log(error);
         console.log(error.response.data);
+        setSuccess("submit-error");
+        setFormError(error.response.data);
       });
-    setTrigger(!useTrigger);
   };
 
   const submitDelete = async (event) => {
     event.preventDefault();
-    await axios
-      .delete(`http://localhost:3001/api/probes/${deleteProbe}`)
-      .then((res) => {
-        console.log(res.data);
-      });
-    setDeleteProbe("");
-    setTrigger(!useTrigger);
+    if (!deleteProbe) {
+      setSuccess("submit-error");
+      setFormError("No data entered");
+    } else {
+      await axios
+        .delete(`http://localhost:3001/api/probes/${deleteProbe}`)
+        .then((res) => {
+          console.log(res.data);
+          setTrigger(!useTrigger);
+          setDeleteProbe("");
+          setFormError(`Probe ${deleteProbe} deleted successfully!`);
+          setSuccess("submit-success");
+        })
+        .catch((error) => {
+          console.log(error);
+          console.log(error.response.data);
+          setSuccess("submit-error");
+          setFormError(error.response.data);
+        });
+    }
   };
 
   return (
@@ -95,6 +114,8 @@ function App() {
                 handleSerialChange={handleSerialChange}
                 handleManufChange={handleManufChange}
                 onSubmit={submitProbe}
+                success={success}
+                formError={formError}
               />
             }
           ></Route>

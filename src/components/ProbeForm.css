@@ -1,46 +1,54 @@
-.probe-form{
-     display: grid;
-     grid-template-columns: 300px 300px;
-     row-gap: 10px;
-     min-width: 600px;
-     background-color: white;
+.probe-form {
+  display: grid;
+  grid-template-columns: 300px 300px;
+  row-gap: 10px;
+  min-width: 600px;
+  background-color: white;
 }
-.probe-label{
-    font-weight: bold;
-    font-size: 17px;
-    width: 50%;
+.probe-label {
+  font-weight: bold;
+  font-size: 17px;
+  width: 50%;
 }
-.legend-form{
-    margin-bottom: 25px;
-    font-weight: bold;
-    font-size: 2rem;
-    
+.legend-form {
+  margin-bottom: 25px;
+  font-weight: bold;
+  font-size: 2rem;
 }
-.input-form{
-    width: 250px;
-    height: 30px;
-    padding: 0px;
+.input-form {
+  width: 250px;
+  height: 30px;
+  padding: 0px;
 }
-.button-form{
-    background-color: #0066b9c9;
-    border: 1px solid #0077CC;
-    border-radius: 10px;
-    box-sizing: border-box;
-    color: #FFFFFF;
-    display: inline-flex;
-    flex-direction: column;
-    font-family: "SF Pro Text","SF Pro Icons","AOS Icons","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 17px;
-    font-weight: 400;
-    height: 52px;
-    justify-content: center;
-    padding: 4px 15px;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    text-decoration: none;
-    text-align: center;
+.button-form {
+  background-color: #0066b9c9;
+  border: 1px solid #0077cc;
+  border-radius: 10px;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: inline-flex;
+  flex-direction: column;
+  font-family: "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue",
+    Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  height: 52px;
+  justify-content: center;
+  padding: 4px 15px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  text-align: center;
 }
 .button-form:hover {
-    background-color: #0067b9;
-    border-color: #1482D0;
+  background-color: #0067b9;
+  border-color: #1482d0;
+}
+.submit-error {
+  color: red;
+  background-color: black;
+  font-weight: 800;
+}
+.submit-success {
+  color: green;
 }

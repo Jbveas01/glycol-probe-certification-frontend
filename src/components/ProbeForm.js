@@ -1,4 +1,4 @@
-import './ProbeForm.css'
+import "./ProbeForm.css";
 
 const ProbeForm = ({
   newCert,
@@ -10,14 +10,17 @@ const ProbeForm = ({
   onSubmit,
   handleCertChange,
   handleLotChange,
+  success,
+  formError,
 }) => {
   return (
-    <div className='form-container'>
-      <legend className='legend-form'>Enter Glycol Probe data</legend>
-      <form className='probe-form' onSubmit={onSubmit} id='data-form'>
-        <label className='probe-label'>Serial #<br />
+    <div className="form-container">
+      <legend className="legend-form">Enter Glycol Probe data</legend>
+      <form className="probe-form" onSubmit={onSubmit} id="data-form">
+        <label className="probe-label">
+          Serial #<br />
           <input
-            className='input-form'
+            className="input-form"
             name="serial"
             value={newSerial}
             onChange={handleSerialChange}
@@ -25,9 +28,11 @@ const ProbeForm = ({
             placeholder="Enter Probe Serial #"
           />
         </label>
-        <label className='probe-label'>Certification Date<br />
+        <label className="probe-label">
+          Certification Date
+          <br />
           <input
-            className='input-form'
+            className="input-form"
             name="certDate"
             type="date"
             value={newCert}
@@ -36,9 +41,10 @@ const ProbeForm = ({
             placeholder="Enter certification date"
           />
         </label>
-        <label className='probe-label'>Lot #<br />
+        <label className="probe-label">
+          Lot #<br />
           <input
-            className='input-form'
+            className="input-form"
             name="lot#"
             value={newLot}
             onChange={handleLotChange}
@@ -46,9 +52,11 @@ const ProbeForm = ({
             placeholder="Enter Lot #"
           />
         </label>
-        <label className='probe-label'>Manufacture Date<br />
+        <label className="probe-label">
+          Manufacture Date
+          <br />
           <input
-            className='input-form'
+            className="input-form"
             name="manufDate"
             type="date"
             value={newManuf}
@@ -58,8 +66,10 @@ const ProbeForm = ({
           />
         </label>
       </form>
-      <button className='button-form' form="data-form" type="submit">Submit Probe</button>
-
+      <div className={success}>{formError}</div>
+      <button className="button-form" form="data-form" type="submit">
+        Submit Probe
+      </button>
     </div>
   );
 };
