@@ -9,8 +9,9 @@ body {
 .App {
   background-color: lightgrey;
   margin-left: 50px;
-  margin-right: 200px;
-  min-width: 830px;
+  margin-right: auto;
+  /* margin: auto; */
+  max-width: 830px;
 }
 
 .main {
