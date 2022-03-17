@@ -1,10 +1,9 @@
 .navbar {
   width: 200px;
-  position: fixed;
+  position: absolute;
   top: 0px;
   left: 0px;
   overflow-x: hidden;
-  height: 100%;
   padding-left: 10px;
   padding-top: 130px;
   background-color: white;

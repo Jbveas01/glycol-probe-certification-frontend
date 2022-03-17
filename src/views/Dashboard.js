@@ -1,11 +1,12 @@
+import "./Dashboard.css";
 const Dashboard = ({ probeList, filter, handleChange }) => {
-  const filteredProbes = probeList.filter((probe) =>
-    probe._id.includes(filter)
+  const filteredProbes = probeList.filter(
+    (probe) => probe._id.includes(filter)
+    // Object.values(probe).some((v) => v.includes(filter))
   );
   return (
-    <div>
-      Dashboard
-      <input value={filter} onChange={handleChange} />
+    <div className="table-div">
+      {/* <input value={filter} onChange={handleChange} /> */}
       <table>
         <tbody>
           <th>Serial #</th>

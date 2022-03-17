@@ -5,18 +5,20 @@ body {
   margin: 0;
   box-sizing: border-box;
 }
-
 .App {
   background-color: lightgrey;
-  margin-left: 50px;
-  margin-right: auto;
-  /* margin: auto; */
+  margin: auto;
   max-width: 830px;
-}
-
-.main {
-  margin-left: 200px;
+  margin-left: min(50%, 220px);
+  min-height: 800px;
 }
 .hidden {
   display: none;
+}
+.main {
+  /* height: 100%; */
+  /* margin-bottom: 150px; */
+}
+#root {
+  background-color: blue;
 }

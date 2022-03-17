@@ -125,10 +125,10 @@ function App() {
           filter={filter}
           handleChange={handleFilterChange}
         />
-        <form onSubmit={submitDelete}>
+        {/* <form onSubmit={submitDelete}>
           <input value={deleteProbe} onChange={handleDeleteChange}></input>
           <button type="submit">Delete probe</button>
-        </form>
+        </form> */}
       </div>
       <Footer />
     </div>
