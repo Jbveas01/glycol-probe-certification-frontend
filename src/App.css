@@ -4,21 +4,15 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  height: 100%;
 }
 .App {
-  background-color: lightgrey;
+  background-color: rgba(211, 211, 211, 0.527);
   margin: auto;
-  max-width: 830px;
+  max-width: 1030px;
   margin-left: min(50%, 220px);
-  min-height: 800px;
+  margin-bottom: 150px;
 }
 .hidden {
   display: none;
-}
-.main {
-  /* height: 100%; */
-  /* margin-bottom: 150px; */
-}
-#root {
-  background-color: blue;
 }

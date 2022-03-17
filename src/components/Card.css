@@ -1,0 +1,22 @@
+.card{
+    background-color: #0067b9;
+    padding: 10px;
+    min-width: 130px;
+    width: 25%;
+    margin: 0;
+    border: 1px solid white;
+}
+.card-title{
+    border-bottom: 1px solid white;
+    text-align: center;
+    color: white;
+    margin: 0;
+    font-size: 1.5rem;
+}
+.card-stats{
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    margin: auto;
+    justify-content: center;
+}

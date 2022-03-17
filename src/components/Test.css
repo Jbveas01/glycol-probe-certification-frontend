@@ -1,0 +1,8 @@
+.recharts-default-legend{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+.recharts-default-legend li{
+    text-align: left;
+}

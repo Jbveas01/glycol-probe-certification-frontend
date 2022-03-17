@@ -3,10 +3,14 @@ import ProbeForm from "./components/ProbeForm";
 import Dashboard from "./views/Dashboard";
 import Navbar from "./components/Navbar";
 import axios from "axios";
+import Probes from "./views/Probes";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import Test from "./components/Test";
+import Shipping from "./views/Shipping"
+import Warehouse from "./views/Warehouse"
 
 function App() {
   const [newSerial, setSerial] = useState("");
@@ -103,7 +107,7 @@ function App() {
         <Routes>
           <Route
             path="/probes"
-            element={
+            element={<>
               <ProbeForm
                 newSerial={newSerial}
                 newCert={newCert}
@@ -117,21 +121,25 @@ function App() {
                 success={success}
                 formError={formError}
               />
-            }
-          ></Route>
+              <Probes probeList={probeList}
+                filter={filter}
+                handleChange={handleFilterChange}
+              />
+            </>
+            }>
+          </Route>
+          <Route path='/shipping' element={<Shipping />} />
+          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/warehouse' element={<Warehouse />} />
         </Routes>
-        <Dashboard
-          probeList={probeList}
-          filter={filter}
-          handleChange={handleFilterChange}
-        />
         {/* <form onSubmit={submitDelete}>
           <input value={deleteProbe} onChange={handleDeleteChange}></input>
           <button type="submit">Delete probe</button>
         </form> */}
       </div>
+
       <Footer />
-    </div>
+    </div >
   );
 }
 
