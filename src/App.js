@@ -129,7 +129,7 @@ function App() {
             }>
           </Route>
           <Route path='/shipping' element={<Shipping />} />
-          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/' element={<Dashboard />} />
           <Route path='/warehouse' element={<Warehouse />} />
         </Routes>
         {/* <form onSubmit={submitDelete}>
@@ -137,7 +137,6 @@ function App() {
           <button type="submit">Delete probe</button>
         </form> */}
       </div>
-
       <Footer />
     </div >
   );

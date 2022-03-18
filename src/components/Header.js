@@ -5,6 +5,7 @@ const Header = () => {
   return (
     <div className="header">
       <img className="vaccine" src={vaccine} alt="Vaccine"></img>
+      <h1 className="header-title">Probe Certification Tool</h1>
     </div>
   );
 };

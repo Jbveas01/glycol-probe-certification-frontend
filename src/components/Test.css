@@ -1,3 +1,11 @@
+.bar-container{
+    box-shadow: 0  0 15px rgb(220,220,220);
+    background-color: white;
+    max-width: 900px;
+    padding: 20px;
+    margin-top: 30px;
+}
+
 .recharts-default-legend{
     display: flex;
     flex-direction: column;
@@ -5,4 +13,7 @@
 }
 .recharts-default-legend li{
     text-align: left;
+}
+.bar-title{
+    color: #726f6e;
 }

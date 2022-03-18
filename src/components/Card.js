@@ -1,7 +1,7 @@
 import "./Card.css"
-const Card = ({ title, stats }) => {
+const Card = ({ title, stats, className }) => {
     return (
-        <div className="card">
+        <div className={className}>
             <h1 className="card-title">{title}</h1>
             <p className="card-stats">{stats}</p>
         </div>

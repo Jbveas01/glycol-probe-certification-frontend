@@ -6,10 +6,7 @@ td {
   text-align: center;
 }
 .table-div {
-  /* display: flex;
-  justify-content: center; */
   max-height: 400px;
-  /* min-height: 30vh; */
   overflow: auto;
   border: 1px solid black;
 }

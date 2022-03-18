@@ -1,12 +1,25 @@
 .header {
-  color: black;
-  position: fixed;
-  left: 0px;
-  width: 150px;
+  position: sticky;
+  /* display: float; */
+  width: 100%;
+  height: 80px;
   z-index: 1;
+  /* display: float; */
+  top: 0;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0  0 15px rgb(220,220,220);
+
+}
+.header-title{
+  color: #726f6e;
+  max-width: 400px;
+  margin-right: 10%;
+  padding: 0;
 }
 .vaccine {
-  width: 80%;
+  width: auto;
+  max-height: 80px;
   margin-left: 50px;
-  margin-top: 10px;
 }

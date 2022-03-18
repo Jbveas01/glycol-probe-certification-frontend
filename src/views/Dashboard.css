@@ -1,11 +1,14 @@
 .card-container{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
 }
+.dashboard{
+    max-width: 900px;
+    margin: auto;
+}
 .dashboard-title{
-    padding-bottom: 50px;
-    margin: 0;
-    color: #0067b9;
-    text-align: center;
+    color: #726f6e;
+    margin-top: 0px;
+    padding-top: 15px;
 }
