@@ -66,10 +66,12 @@ const ProbeForm = ({
           />
         </label>
       </form>
-      <div className={success}>{formError}</div>
-      <button className="button-form" form="data-form" type="submit">
-        Submit Probe
-      </button>
+      <div className="button-container">
+        <div className={success}>{formError}</div>
+        <button className="button-form" form="data-form" type="submit">
+          Submit Probe
+        </button>
+      </div>
     </div>
   );
 };

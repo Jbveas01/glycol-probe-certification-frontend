@@ -9,8 +9,8 @@ import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Test from "./components/Test";
-import Shipping from "./views/Shipping"
-import Warehouse from "./views/Warehouse"
+import Shipping from "./views/Shipping";
+import Warehouse from "./views/Warehouse";
 
 function App() {
   const [newSerial, setSerial] = useState("");
@@ -23,11 +23,15 @@ function App() {
   const [deleteProbe, setDeleteProbe] = useState("");
   const [success, setSuccess] = useState("hidden");
   const [formError, setFormError] = useState("");
+  const [certProbeCount, setCertProbeCount] = useState("");
+
+  const TOTALPROBES = 300;
 
   useEffect(() => {
     axios.get("http://localhost:3001/api/probes").then((res) => {
       console.log("Probes Grabbed");
       setProbeList(res.data);
+      setCertProbeCount(res.data.length);
     });
   }, [useTrigger]);
 
@@ -107,30 +111,40 @@ function App() {
         <Routes>
           <Route
             path="/probes"
-            element={<>
-              <ProbeForm
-                newSerial={newSerial}
-                newCert={newCert}
-                newLot={newLot}
-                newManuf={newManuf}
-                handleLotChange={handleLotChange}
-                handleCertChange={handleCertChange}
-                handleSerialChange={handleSerialChange}
-                handleManufChange={handleManufChange}
-                onSubmit={submitProbe}
-                success={success}
-                formError={formError}
+            element={
+              <>
+                <ProbeForm
+                  newSerial={newSerial}
+                  newCert={newCert}
+                  newLot={newLot}
+                  newManuf={newManuf}
+                  handleLotChange={handleLotChange}
+                  handleCertChange={handleCertChange}
+                  handleSerialChange={handleSerialChange}
+                  handleManufChange={handleManufChange}
+                  onSubmit={submitProbe}
+                  success={success}
+                  formError={formError}
+                />
+                <Probes
+                  probeList={probeList}
+                  filter={filter}
+                  handleChange={handleFilterChange}
+                />
+              </>
+            }
+          ></Route>
+          <Route path="/shipping" element={<Shipping />} />
+          <Route
+            path="/"
+            element={
+              <Dashboard
+                certProbeCount={certProbeCount}
+                totalProbes={TOTALPROBES}
               />
-              <Probes probeList={probeList}
-                filter={filter}
-                handleChange={handleFilterChange}
-              />
-            </>
-            }>
-          </Route>
-          <Route path='/shipping' element={<Shipping />} />
-          <Route path='/' element={<Dashboard />} />
-          <Route path='/warehouse' element={<Warehouse />} />
+            }
+          />
+          <Route path="/warehouse" element={<Warehouse />} />
         </Routes>
         {/* <form onSubmit={submitDelete}>
           <input value={deleteProbe} onChange={handleDeleteChange}></input>
@@ -138,7 +152,7 @@ function App() {
         </form> */}
       </div>
       <Footer />
-    </div >
+    </div>
   );
 }
 
