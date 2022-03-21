@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = ({ isActive, mobileNav, handleNavClick }) => {
-  const navClasses = ['hidden', 'navbar']
+  const navClasses = ['hide-nav', 'navbar']
   return (
     <div className={navClasses[Number(mobileNav)]}>
       <div className="nav-button-container">
