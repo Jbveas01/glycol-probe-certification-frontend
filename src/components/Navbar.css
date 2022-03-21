@@ -60,5 +60,22 @@
   padding-top: 150px;
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (max-width: 720px) {
+  .navbar{
+    display: absolute;
+    z-index: 1;
+    top: 80px;
+  }
+  .navlink-container{
+    padding-top: 50px;
+  }
+  .nav-button-container{
+    text-align: right;
+    position: fixed;
+    top: 0%;
+    display: block;
+  }
+  .close-nav{
+    text-align: right;
+  }
 }

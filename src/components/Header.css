@@ -23,3 +23,14 @@
   max-height: 80px;
   margin-left: 50px;
 }
+
+@media only screen and (max-width: 720px) {
+  .vaccine{
+    margin: 0;
+  }
+  .header-title{
+    margin: 0;
+    font-size: 1.5rem;
+    margin: auto; 
+  }
+}

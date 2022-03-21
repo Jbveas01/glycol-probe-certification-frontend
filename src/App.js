@@ -13,6 +13,8 @@ import Shipping from "./views/Shipping";
 import Warehouse from "./views/Warehouse";
 
 function App() {
+  const TOTALPROBES = 300;
+
   const [newSerial, setSerial] = useState("");
   const [newCert, setCert] = useState("");
   const [newLot, setLot] = useState("");
@@ -24,8 +26,9 @@ function App() {
   const [success, setSuccess] = useState("hidden");
   const [formError, setFormError] = useState("");
   const [certProbeCount, setCertProbeCount] = useState("");
+  const [mobileNav, setMobileNav] = useState(true)
 
-  const TOTALPROBES = 300;
+
 
   useEffect(() => {
     axios.get("http://localhost:3001/api/probes").then((res) => {
@@ -42,6 +45,7 @@ function App() {
   const handleManufChange = (event) => setManuf(event.target.value);
   const handleFilterChange = (event) => setFilter(event.target.value);
   const handleDeleteChange = (event) => setDeleteProbe(event.target.value);
+  const handleNavClick = (event) => setMobileNav(!mobileNav)
 
   ///Handles Submitting the probe into the database
   const submitProbe = async (event) => {
@@ -106,7 +110,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Navbar />
+      <Navbar mobileNav={mobileNav} handleNavClick={handleNavClick} />
       <div className="main">
         <Routes>
           <Route
