@@ -23,3 +23,10 @@ th {
   margin-top: 0px;
   height: 50px;
 }
+
+@media only screen and (max-width: 720px) {
+  td {
+    padding: 0px;
+    text-align: center;
+  }
+}

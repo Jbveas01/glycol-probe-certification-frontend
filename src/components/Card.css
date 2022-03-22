@@ -1,24 +1,24 @@
-.dashboard-card{
-    background-color: #0067b9;
-    padding: 10px;
-    min-width: 130px;
-    width: 25%;
-    margin: 0;
-    border: 1px solid white;
-    border-radius: 15px;
-    box-shadow: 0  0 15px rgb(220,220,220);
+.dashboard-card {
+  background-color: #0067b9;
+  padding: 10px;
+  /* min-width: 130px; */
+  width: 25%;
+  margin: 0;
+  border: 1px solid white;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgb(220, 220, 220);
 }
-.card-title{
-    border-bottom: 1px solid white;
-    text-align: center;
-    color: white;
-    margin: 0;
-    font-size: 1.5rem;
+.card-title {
+  border-bottom: 1px solid white;
+  text-align: center;
+  color: white;
+  margin: 0;
+  font-size: 1.2rem;
 }
-.card-stats{
-    text-align: center;
-    color: white;
-    font-size: 2rem;
-    margin: auto;
-    justify-content: center;
+.card-stats {
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+  margin: auto;
+  justify-content: center;
 }
