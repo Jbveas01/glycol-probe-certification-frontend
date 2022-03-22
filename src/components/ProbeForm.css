@@ -21,6 +21,7 @@
   font-size: 2rem;
   color: #726f6e;
   padding: 0px;
+  padding-top: 15px;
 }
 .input-form {
   width: 250px;
@@ -65,7 +66,7 @@
   text-align: center;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 720px) {
   .probe-form{
     display: flex;
     padding-left: 0px;
@@ -77,6 +78,9 @@
   }
   .probe-label{
     width: 90%;
+    text-align: center;
+  }
+  .legend-form{
     text-align: center;
   }
 }

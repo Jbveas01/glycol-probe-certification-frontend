@@ -3,26 +3,28 @@
   position: fixed;
   top: 0px;
   left: 0px;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   padding-left: 5px;
   z-index: 0;
   height: 100%;
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
   background-color: rgb(249, 249, 249);
-  box-shadow:10px 10px 10px rgb(227,228,233)
+  box-shadow:10px 10px 10px rgb(227,228,233);
+
 }
 .hide-nav {
   width: 170px;
   position: fixed;
   top: 0px;
   left: 0px;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   padding-left: 5px;
   z-index: 0;
   height: 100%;
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
   background-color: rgb(249, 249, 249);
-  box-shadow:10px 10px 10px rgb(227,228,233)
+  box-shadow:10px 10px 10px rgb(227,228,233);
+  
 }
 
 .nav-link {
@@ -72,26 +74,42 @@
 .navlink-container{
   padding-top: 150px;
 }
+.nav-button{
+  display: none;
+}
 
 @media only screen and (max-width: 720px) {
   .navbar{
     display: absolute;
     z-index: 1;
     top: 80px;
+    box-shadow: none;
+    border-right: 1px solid black;
   }
   .navlink-container{
     padding-top: 50px;
   }
+  .hide-nav{
+    left: -175px;
+  }
   .nav-button-container{
     text-align: right;
-    position: fixed;
-    top: 0%;
+    position: absolute;
+    right: -28px;
+  }
+  .nav-button{
     display: block;
+    background-color: #0067b9;
   }
   .close-nav{
     text-align: right;
   }
   .hide-nav{
-    display: none;
+    padding-top: 80px;
+    box-shadow: none;
+  }
+  i{
+    color: white;
+    z-index: 3;
   }
 }

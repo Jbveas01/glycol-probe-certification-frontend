@@ -2,11 +2,12 @@ import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = ({ isActive, mobileNav, handleNavClick }) => {
-  const navClasses = ['hide-nav', 'navbar']
+  const navClasses = ['navbar', 'hide-nav']
   return (
     <div className={navClasses[Number(mobileNav)]}>
       <div className="nav-button-container">
-        <button onClick={handleNavClick}>&#8592;</button>
+        <button className='nav-button' onClick={handleNavClick}>
+          <i class="fa fa-bars" aria-hidden="true"></i></button>
       </div>
       <div className="navlink-container" onClick={handleNavClick}>
 
