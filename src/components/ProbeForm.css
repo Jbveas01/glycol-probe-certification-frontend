@@ -7,15 +7,15 @@
   margin: auto;
   padding-right: 0px;
   max-width: 900px;
-  box-shadow:0 0 15px rgb(220 220 220);
+  box-shadow: 0 0 15px rgb(220 220 220);
 }
 .probe-label {
   font-weight: bold;
-  font-size: 17px;  
+  font-size: 17px;
 }
 .legend-form {
   margin: auto;
-  max-width:900px;
+  max-width: 900px;
   margin-bottom: 25px;
   font-weight: bold;
   font-size: 2rem;
@@ -42,7 +42,7 @@
   padding: 4px 15px;
   margin-top: 15px;
   margin-bottom: 10px;
-  margin-right: 200px;
+  min-width: 103px;
 }
 .button-container {
   display: flex;
@@ -58,29 +58,30 @@
   color: red;
   font-weight: 800;
   display: inline-block;
+  margin: auto;
 }
 .submit-success {
   color: green;
   font-weight: 800;
   display: inline-block;
-  text-align: center;
+  margin: auto;
 }
 
 @media only screen and (max-width: 720px) {
-  .probe-form{
+  .probe-form {
     display: flex;
     padding-left: 0px;
     flex-direction: column;
     align-items: center;
   }
-  .input-form{
+  .input-form {
     width: 90%;
   }
-  .probe-label{
+  .probe-label {
     width: 90%;
     text-align: center;
   }
-  .legend-form{
+  .legend-form {
     text-align: center;
   }
 }

@@ -26,9 +26,9 @@ function App() {
   const [success, setSuccess] = useState("hidden");
   const [formError, setFormError] = useState("");
   const [certProbeCount, setCertProbeCount] = useState("");
-  const [mobileNav, setMobileNav] = useState(true)
-
-
+  const [mobileNav, setMobileNav] = useState(true);
+  const [tdID, setTdID] = useState("");
+  const [updateClass, setUpdateClass] = useState(false);
 
   useEffect(() => {
     axios.get("http://localhost:3001/api/probes").then((res) => {
@@ -45,7 +45,13 @@ function App() {
   const handleManufChange = (event) => setManuf(event.target.value);
   const handleFilterChange = (event) => setFilter(event.target.value);
   const handleDeleteChange = (event) => setDeleteProbe(event.target.value);
-  const handleNavClick = (event) => setMobileNav(!mobileNav)
+  const handleNavClick = () => setMobileNav(!mobileNav);
+
+  const tdClick = (event) => {
+    event.preventDefault();
+    setTdID(event.target.innerHTML);
+    setUpdateClass(!updateClass);
+  };
 
   ///Handles Submitting the probe into the database
   const submitProbe = async (event) => {
@@ -71,7 +77,7 @@ function App() {
         setCert("");
         setLot("");
         setManuf("");
-        setFormError(`Probe ${probe._id} added to the database!`);
+        setFormError(`Probe ${probe._id.toUpperCase()} added to the database!`);
         setSuccess("submit-success");
         setTrigger(!useTrigger);
       })
@@ -107,6 +113,25 @@ function App() {
     }
   };
 
+  const editCertifcation = async (event) => {
+    event.preventDefault();
+    const id = tdID;
+    console.log(id);
+    const updatedExpiration = new Date(
+      new Date(newCert).setFullYear(new Date(newCert).getFullYear() + 2)
+    );
+    console.log(updatedExpiration);
+    await axios
+      .put(`http://localhost:3001/api/probes/${id}`, {
+        certificationDate: newCert,
+        expirationDate: updatedExpiration,
+      })
+      .then((res) => {
+        console.log(res.data);
+      });
+    setTrigger(!useTrigger);
+  };
+
   return (
     <div className="App">
       <Header />
@@ -134,6 +159,7 @@ function App() {
                   probeList={probeList}
                   filter={filter}
                   handleChange={handleFilterChange}
+                  filterFunction={(probe) => probe._id.includes(filter)}
                 />
               </>
             }
@@ -143,8 +169,15 @@ function App() {
             path="/"
             element={
               <Dashboard
+                probeList={probeList}
                 certProbeCount={certProbeCount}
                 totalProbes={TOTALPROBES}
+                tdClick={tdClick}
+                handleCertChange={handleCertChange}
+                editCertifcation={editCertifcation}
+                newCert={newCert}
+                updateClass={updateClass}
+                tdID={tdID}
               />
             }
           />
