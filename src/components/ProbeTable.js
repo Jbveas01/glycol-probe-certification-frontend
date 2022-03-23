@@ -11,6 +11,7 @@ const ProbeTable = ({
   tdID,
 }) => {
   const filteredProbes = probeList.filter(filterFunction);
+  // sort((a, b) => new Date(a.expirationDate) > new Date(b.expirationDate))
   // const editClass = ["hidden", "update-form"];
   const editClass = ["hidden", "update-form"];
   ///Need to open edit bar at top and fill in data from the probe
