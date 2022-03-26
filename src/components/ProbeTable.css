@@ -1,5 +1,40 @@
 .table-serial {
-  color: blue;
-  text-decoration: underline;
+  color: #0067b9;
+  text-decoration: none;
   cursor: pointer;
+}
+.table-serial:hover {
+  text-decoration: underline;
+}
+.search-input {
+  max-width: 300px;
+  margin-left: auto;
+  margin-bottom: 1px;
+}
+.probe-table {
+  display: flex;
+  flex-direction: column;
+}
+.update-form {
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+#update-btn {
+  background-color: #0067b9;
+  color: white;
+  border: 1px solid #0077cc;
+  height: 24px;
+  margin-left: 5px;
+}
+#cancel-btn {
+  background-color: red;
+  color: white;
+  border: 1px solid red;
+  height: 24px;
+  margin-left: 5px;
+}
+@media only screen and (min-width: 780px) {
+  .update-form {
+    padding-left: 0px;
+  }
 }

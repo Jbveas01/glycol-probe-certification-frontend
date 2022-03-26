@@ -1,6 +1,6 @@
 import Card from "../components/Card";
 import "./Dashboard.css";
-import Test from "../components/Test";
+import Charts from "../components/Charts";
 import ProbeTable from "../components/ProbeTable";
 
 const Dashboard = ({
@@ -13,6 +13,7 @@ const Dashboard = ({
   newCert,
   updateClass,
   tdID,
+  closeForm,
 }) => {
   return (
     <div className="dashboard">
@@ -34,16 +35,17 @@ const Dashboard = ({
           stats={totalProbes}
         />
       </div>
-      <Test certProbeCount={certProbeCount} totalProbes={totalProbes} />
+      <Charts
+        certProbeCount={certProbeCount}
+        totalProbes={totalProbes}
+        probeList={probeList}
+        filterFunction={(probe) => new Date(probe.expirationDate) <= new Date()}
+      />
+      <h1 className="expired-h1">Expired Probes</h1>
       <ProbeTable
         probeList={probeList}
         filterFunction={(probe) => new Date(probe.expirationDate) <= new Date()}
-        tdClick={tdClick}
-        handleCertChange={handleCertChange}
-        editCertifcation={editCertifcation}
-        newCert={newCert}
-        updateClass={updateClass}
-        tdID={tdID}
+        updateClass={"hidden"}
       />
     </div>
   );

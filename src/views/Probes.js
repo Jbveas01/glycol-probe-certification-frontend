@@ -1,16 +1,36 @@
 import "./Probes.css";
 import ProbeTable from "../components/ProbeTable";
-const Probes = ({ probeList, filter, handleChange }) => {
+const Probes = ({
+  probeList,
+  filter,
+  handleChange,
+  tdClick,
+  handleCertChange,
+  editCertifcation,
+  newCert,
+  updateClass,
+  tdID,
+  closeForm,
+}) => {
   return (
-    <div>
+    <div className="probes">
       <input
         value={filter}
         placeholder="Search Serial #'s"
         onChange={handleChange}
+        className="search-input"
       />
       <ProbeTable
         probeList={probeList}
         filterFunction={(probe) => probe._id.includes(filter.toUpperCase())}
+        tdClick={tdClick}
+        handleCertChange={handleCertChange}
+        editCertifcation={editCertifcation}
+        newCert={newCert}
+        updateClass={updateClass}
+        tdID={tdID}
+        closeForm={closeForm}
+        tableClass={"table-serial"}
       />
     </div>
   );

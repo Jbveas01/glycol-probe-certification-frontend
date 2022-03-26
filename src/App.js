@@ -8,7 +8,6 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Test from "./components/Test";
 import Shipping from "./views/Shipping";
 import Warehouse from "./views/Warehouse";
 
@@ -28,11 +27,10 @@ function App() {
   const [certProbeCount, setCertProbeCount] = useState("");
   const [mobileNav, setMobileNav] = useState(true);
   const [tdID, setTdID] = useState("");
-  const [updateClass, setUpdateClass] = useState(false);
+  const [updateClass, setUpdateClass] = useState("hidden");
 
   useEffect(() => {
     axios.get("http://localhost:3001/api/probes").then((res) => {
-      console.log("Probes Grabbed");
       setProbeList(res.data);
       setCertProbeCount(res.data.length);
     });
@@ -50,7 +48,12 @@ function App() {
   const tdClick = (event) => {
     event.preventDefault();
     setTdID(event.target.innerHTML);
-    setUpdateClass(!updateClass);
+    setUpdateClass("update-form");
+  };
+
+  const closeForm = (event) => {
+    event.preventDefault();
+    setUpdateClass("hidden");
   };
 
   ///Handles Submitting the probe into the database
@@ -72,7 +75,6 @@ function App() {
     await axios
       .post("http://localhost:3001/api/probes", probe)
       .then((res) => {
-        console.log(res);
         setSerial("");
         setCert("");
         setLot("");
@@ -82,8 +84,6 @@ function App() {
         setTrigger(!useTrigger);
       })
       .catch((error) => {
-        console.log(error);
-        console.log(error.response.data);
         setSuccess("submit-error");
         setFormError(error.response.data);
       });
@@ -98,15 +98,12 @@ function App() {
       await axios
         .delete(`http://localhost:3001/api/probes/${deleteProbe}`)
         .then((res) => {
-          console.log(res.data);
           setTrigger(!useTrigger);
           setDeleteProbe("");
           setFormError(`Probe ${deleteProbe} deleted successfully!`);
           setSuccess("submit-success");
         })
         .catch((error) => {
-          console.log(error);
-          console.log(error.response.data);
           setSuccess("submit-error");
           setFormError(error.response.data);
         });
@@ -116,20 +113,26 @@ function App() {
   const editCertifcation = async (event) => {
     event.preventDefault();
     const id = tdID;
-    console.log(id);
     const updatedExpiration = new Date(
       new Date(newCert).setFullYear(new Date(newCert).getFullYear() + 2)
     );
-    console.log(updatedExpiration);
     await axios
       .put(`http://localhost:3001/api/probes/${id}`, {
         certificationDate: newCert,
         expirationDate: updatedExpiration,
       })
       .then((res) => {
-        console.log(res.data);
+        setSuccess("submit-success");
+        setFormError(
+          `Probe ${id}'s Certifcation date updated to ${new Date(
+            newCert
+          ).toLocaleDateString("en-US", {
+            timeZone: "UTC",
+          })}`
+        );
       });
     setTrigger(!useTrigger);
+    setUpdateClass("hidden");
   };
 
   return (
@@ -159,12 +162,27 @@ function App() {
                   probeList={probeList}
                   filter={filter}
                   handleChange={handleFilterChange}
-                  filterFunction={(probe) => probe._id.includes(filter)}
+                  tdClick={tdClick}
+                  handleCertChange={handleCertChange}
+                  editCertifcation={editCertifcation}
+                  newCert={newCert}
+                  updateClass={updateClass}
+                  tdID={tdID}
+                  closeForm={closeForm}
                 />
+                <form onSubmit={submitDelete}>
+                  <input
+                    value={deleteProbe}
+                    onChange={handleDeleteChange}
+                    placeholder="Enter Probe Serial#"
+                  ></input>
+                  <button type="submit" className="delete-btn">
+                    Delete probe
+                  </button>
+                </form>
               </>
             }
           ></Route>
-          <Route path="/shipping" element={<Shipping />} />
           <Route
             path="/"
             element={
@@ -178,15 +196,13 @@ function App() {
                 newCert={newCert}
                 updateClass={updateClass}
                 tdID={tdID}
+                closeForm={closeForm}
               />
             }
           />
-          <Route path="/warehouse" element={<Warehouse />} />
+          {/* <Route path="/shipping" element={<Shipping />} /> */}
+          {/* <Route path="/warehouse" element={<Warehouse />} /> */}
         </Routes>
-        {/* <form onSubmit={submitDelete}>
-          <input value={deleteProbe} onChange={handleDeleteChange}></input>
-          <button type="submit">Delete probe</button>
-        </form> */}
       </div>
       <Footer />
     </div>

@@ -1,9 +1,8 @@
 .dashboard-card {
   background-color: #0067b9;
   padding: 10px;
-  /* min-width: 130px; */
-  width: 25%;
-  margin: 0;
+  width: 60%;
+  margin: 5px;
   border: 1px solid white;
   border-radius: 15px;
   box-shadow: 0 0 15px rgb(220, 220, 220);
@@ -21,4 +20,10 @@
   font-size: 2rem;
   margin: auto;
   justify-content: center;
+}
+@media only screen and (min-width: 780px) {
+  .dashboard-card {
+    width: 25%;
+    margin: 0;
+  }
 }

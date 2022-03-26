@@ -1,0 +1,42 @@
+.bar-container {
+  box-shadow: 0 0 15px rgb(220, 220, 220);
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  min-width: 200px;
+}
+
+.recharts-default-legend {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+.recharts-default-legend li {
+  text-align: left;
+}
+.recharts-surface {
+  text-align: center;
+}
+.bar-title {
+  color: #726f6e;
+  text-align: center;
+}
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  margin: auto;
+}
+
+@media only screen and (min-width: 780px) {
+  .chart-container {
+    display: grid;
+    grid-template-columns: 25% 25%;
+    justify-content: space-around;
+    max-width: 1400px;
+  }
+}

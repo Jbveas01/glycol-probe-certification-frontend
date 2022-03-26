@@ -9,46 +9,57 @@ const ProbeTable = ({
   newCert,
   updateClass,
   tdID,
+  closeForm,
+  tableClass,
 }) => {
   const filteredProbes = probeList.filter(filterFunction);
-  // sort((a, b) => new Date(a.expirationDate) > new Date(b.expirationDate))
-  // const editClass = ["hidden", "update-form"];
-  const editClass = ["hidden", "update-form"];
-  ///Need to open edit bar at top and fill in data from the probe
+  const sortedProbes = filteredProbes.sort(
+    (a, b) => new Date(a.expirationDate) - new Date(b.expirationDate)
+  );
   return (
-    <>
-      <div className={editClass[Number(updateClass)]}>
+    <div className="probe-table">
+      <div className={updateClass}>
         <form onSubmit={editCertifcation}>
-          <div>
-            {/* Edit Probe {filteredProbes.find((probe) => probe._id === tdID)._id} */}
+          <div className="update-div">
+            Update Certifcation Date for <b>{tdID}</b>
           </div>
           <input
             onChange={handleCertChange}
             value={newCert}
             type="date"
-          ></input>
-          <button type="submit">Submit</button>
+            required
+          />
+          <button id="update-btn" type="submit">
+            Update
+          </button>
+          <button id="cancel-btn" onClick={closeForm}>
+            Cancel
+          </button>
         </form>
       </div>
       <div className="table-div">
         <table>
-          <tbody>
-            <th>Serial #</th>
-            <th>Lot #</th>
-            <th>Manufacture Date</th>
-            <th>Certification Date</th>
-            <th>Expiration Date</th>
-            {filteredProbes.map((probe) => {
-              const {
-                _id,
-                lot,
-                manufactureDate,
-                certificationDate,
-                expirationDate,
-              } = probe;
-              return (
-                <tr key={_id}>
-                  <td onClick={tdClick} className="table-serial">
+          <thead>
+            <tr>
+              <th>Serial #</th>
+              <th>Lot #</th>
+              <th>Manufacture Date</th>
+              <th>Certification Date</th>
+              <th>Expiration Date</th>
+            </tr>
+          </thead>
+          {sortedProbes.map((probe) => {
+            const {
+              _id,
+              lot,
+              manufactureDate,
+              certificationDate,
+              expirationDate,
+            } = probe;
+            return (
+              <tbody key={_id}>
+                <tr>
+                  <td onClick={tdClick} className={tableClass}>
                     {_id}
                   </td>
                   <td>{lot}</td>
@@ -68,12 +79,12 @@ const ProbeTable = ({
                     })}
                   </td>
                 </tr>
-              );
-            })}
-          </tbody>
+              </tbody>
+            );
+          })}
         </table>
       </div>
-    </>
+    </div>
   );
 };
 

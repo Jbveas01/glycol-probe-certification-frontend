@@ -7,28 +7,26 @@
   background-color: white;
   display: flex;
   justify-content: space-between;
-  box-shadow: 0  0 15px rgb(220,220,220);
-
+  box-shadow: 0 0 15px rgb(220, 220, 220);
 }
-.header-title{
+.header-title {
   color: #726f6e;
   max-width: 400px;
-  margin-right: 10%;
-  padding: 0;
+  margin: auto;
+  font-size: 1.5rem;
 }
 .vaccine {
   width: auto;
   max-height: 80px;
-  margin-left: 50px;
+  margin: 0;
 }
 
-@media only screen and (max-width: 720px) {
-  .vaccine{
-    margin: 0;
+@media only screen and (min-width: 780px) {
+  .vaccine {
+    margin-left: 50px;
   }
-  .header-title{
-    margin: 0;
-    font-size: 1.5rem;
-    margin: auto; 
+  .header-title {
+    font-size: 2rem;
+    margin-right: 10%;
   }
 }

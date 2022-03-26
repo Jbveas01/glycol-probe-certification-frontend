@@ -2,15 +2,15 @@ import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = ({ isActive, mobileNav, handleNavClick }) => {
-  const navClasses = ['navbar', 'hide-nav']
+  const navClasses = ["navbar", "hide-nav"];
   return (
     <div className={navClasses[Number(mobileNav)]}>
       <div className="nav-button-container">
-        <button className='nav-button' onClick={handleNavClick}>
-          <i class="fa fa-bars" aria-hidden="true"></i></button>
+        <button className="nav-button" onClick={handleNavClick}>
+          <i className="fa fa-bars" aria-hidden="true"></i>
+        </button>
       </div>
       <div className="navlink-container" onClick={handleNavClick}>
-
         <NavLink to="/" className={`nav-link ${isActive ? "active" : ""}`}>
           Dashboard
         </NavLink>
@@ -20,7 +20,7 @@ const Navbar = ({ isActive, mobileNav, handleNavClick }) => {
         >
           Probes
         </NavLink>
-        <NavLink
+        {/* <NavLink
           to="/shipping"
           className={`nav-link ${isActive ? "active" : ""}`}
         >
@@ -31,9 +31,9 @@ const Navbar = ({ isActive, mobileNav, handleNavClick }) => {
           className={`nav-link ${isActive ? "active" : ""}`}
         >
           Warehouse
-        </NavLink>
+        </NavLink> */}
       </div>
-    </div >
+    </div>
   );
 };
 
