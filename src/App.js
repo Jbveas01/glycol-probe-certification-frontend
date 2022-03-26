@@ -44,7 +44,7 @@ function App() {
   const handleFilterChange = (event) => setFilter(event.target.value);
   const handleDeleteChange = (event) => setDeleteProbe(event.target.value);
   const handleNavClick = () => setMobileNav(!mobileNav);
-  const handleUpdateCert = () => setUpdateCert(updateCert);
+  const handleUpdateCert = (event) => setUpdateCert(event.target.value);
 
   const tdClick = (event) => {
     event.preventDefault();
