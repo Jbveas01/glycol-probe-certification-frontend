@@ -115,18 +115,18 @@ function App() {
     event.preventDefault();
     const id = tdID;
     const updatedExpiration = new Date(
-      new Date(newCert).setFullYear(new Date(newCert).getFullYear() + 2)
+      new Date(updateCert).setFullYear(new Date(updateCert).getFullYear() + 2)
     );
     await axios
       .put(`${BASEURL}/${id}`, {
-        certificationDate: newCert,
+        certificationDate: updateCert,
         expirationDate: updatedExpiration,
       })
       .then((res) => {
         setSuccess("submit-success");
         setFormError(
           `Probe ${id}'s Certifcation date updated to ${new Date(
-            newCert
+            updateCert
           ).toLocaleDateString("en-US", {
             timeZone: "UTC",
           })}`
