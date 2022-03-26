@@ -11,6 +11,7 @@ const Probes = ({
   updateClass,
   tdID,
   closeForm,
+  editCertifcation,
 }) => {
   return (
     <div className="probes">
@@ -31,6 +32,7 @@ const Probes = ({
         tdID={tdID}
         closeForm={closeForm}
         tableClass={"table-serial"}
+        editCertifcation={editCertifcation}
       />
     </div>
   );

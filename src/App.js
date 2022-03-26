@@ -170,6 +170,7 @@ function App() {
                   updateClass={updateClass}
                   tdID={tdID}
                   closeForm={closeForm}
+                  editCertifcation={editCertifcation}
                 />
                 <form onSubmit={submitDelete}>
                   <input
