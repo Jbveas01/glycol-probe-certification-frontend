@@ -4,9 +4,9 @@ const ProbeTable = ({
   probeList,
   filterFunction,
   tdClick,
-  handleCertChange,
+  handleUpdateCert,
   editCertifcation,
-  newCert,
+  updateCert,
   updateClass,
   tdID,
   closeForm,
@@ -24,8 +24,8 @@ const ProbeTable = ({
             Update Certifcation Date for <b>{tdID}</b>
           </div>
           <input
-            onChange={handleCertChange}
-            value={newCert}
+            onChange={handleUpdateCert}
+            value={updateCert}
             type="date"
             required
           />

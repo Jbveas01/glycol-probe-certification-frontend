@@ -6,8 +6,8 @@ const Probes = ({
   handleChange,
   tdClick,
   handleCertChange,
-  editCertifcation,
-  newCert,
+  handleUpdateCert,
+  updateCert,
   updateClass,
   tdID,
   closeForm,
@@ -25,8 +25,8 @@ const Probes = ({
         filterFunction={(probe) => probe._id.includes(filter.toUpperCase())}
         tdClick={tdClick}
         handleCertChange={handleCertChange}
-        editCertifcation={editCertifcation}
-        newCert={newCert}
+        updateCertifcation={handleUpdateCert}
+        updateCert={updateCert}
         updateClass={updateClass}
         tdID={tdID}
         closeForm={closeForm}

@@ -8,11 +8,10 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Shipping from "./views/Shipping";
-import Warehouse from "./views/Warehouse";
 
 function App() {
   const TOTALPROBES = 300;
+  const BASEURL = "/api/probes";
 
   const [newSerial, setSerial] = useState("");
   const [newCert, setCert] = useState("");
@@ -28,9 +27,10 @@ function App() {
   const [mobileNav, setMobileNav] = useState(true);
   const [tdID, setTdID] = useState("");
   const [updateClass, setUpdateClass] = useState("hidden");
+  const [updateCert, setUpdateCert] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:3001/api/probes").then((res) => {
+    axios.get(BASEURL).then((res) => {
       setProbeList(res.data);
       setCertProbeCount(res.data.length);
     });
@@ -44,6 +44,7 @@ function App() {
   const handleFilterChange = (event) => setFilter(event.target.value);
   const handleDeleteChange = (event) => setDeleteProbe(event.target.value);
   const handleNavClick = () => setMobileNav(!mobileNav);
+  const handleUpdateCert = () => setUpdateCert(updateCert);
 
   const tdClick = (event) => {
     event.preventDefault();
@@ -73,7 +74,7 @@ function App() {
       ),
     };
     await axios
-      .post("http://localhost:3001/api/probes", probe)
+      .post(BASEURL, probe)
       .then((res) => {
         setSerial("");
         setCert("");
@@ -96,7 +97,7 @@ function App() {
       setFormError("No data entered");
     } else {
       await axios
-        .delete(`http://localhost:3001/api/probes/${deleteProbe}`)
+        .delete(`${BASEURL}/${deleteProbe}`)
         .then((res) => {
           setTrigger(!useTrigger);
           setDeleteProbe("");
@@ -117,7 +118,7 @@ function App() {
       new Date(newCert).setFullYear(new Date(newCert).getFullYear() + 2)
     );
     await axios
-      .put(`http://localhost:3001/api/probes/${id}`, {
+      .put(`${BASEURL}/${id}`, {
         certificationDate: newCert,
         expirationDate: updatedExpiration,
       })
@@ -164,8 +165,8 @@ function App() {
                   handleChange={handleFilterChange}
                   tdClick={tdClick}
                   handleCertChange={handleCertChange}
-                  editCertifcation={editCertifcation}
-                  newCert={newCert}
+                  handleUpdateCert={handleUpdateCert}
+                  updateCert={updateCert}
                   updateClass={updateClass}
                   tdID={tdID}
                   closeForm={closeForm}

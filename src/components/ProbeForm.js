@@ -35,6 +35,8 @@ const ProbeForm = ({
             className="input-form"
             name="certDate"
             type="date"
+            min="2000-01-01"
+            max="3000-01-01"
             value={newCert}
             onChange={handleCertChange}
             required
@@ -59,6 +61,8 @@ const ProbeForm = ({
             className="input-form"
             name="manufDate"
             type="date"
+            min="2000-01-01"
+            max="3000-01-01"
             value={newManuf}
             onChange={handleManufChange}
             required
