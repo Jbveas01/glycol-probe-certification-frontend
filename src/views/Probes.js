@@ -25,7 +25,7 @@ const Probes = ({
         filterFunction={(probe) => probe._id.includes(filter.toUpperCase())}
         tdClick={tdClick}
         handleCertChange={handleCertChange}
-        updateCertifcation={handleUpdateCert}
+        handleUpdateCert={handleUpdateCert}
         updateCert={updateCert}
         updateClass={updateClass}
         tdID={tdID}
