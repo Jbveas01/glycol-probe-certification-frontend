@@ -1,20 +1,6 @@
-# Kroger Technology Glycol Probe Application
+# Kroger Technology Glycol Probe Front End
 
-Web application designed for Kroger Technology's Glycol Probe Certification Program. 
-This application stores probe data, updates probe data, displays relevant stats, and displays probes that need to be recertified
+Front end part of the full stack application designed for Kroger Technology's Glycol Probe Certification Program.
+This application stores probe data, updates probe data, displays relevant stats, and displays probes that need to be recertified. This repository contains only the front end of the full application. The server was developed in a separate repository which also contains the full stack application. This is located at [Glycol Probe Full Application](https://github.com/Jbveas01/glycolserver).
 
-## How to run
-1. Clone the repository
-
-
-## Features
-
-- [x]Posts Data from form to MongoDB atlas
-- [x]Gets Glycol Probe data from MongoDB and displays it
-- [x]Grabs data from multiple arrays and displays it in tables
-- [x]Utilizes Regex for proper Probe Serial # formatting on input form
-- [x]Uses the current date and displays how many days until probes are expired (2 years)
-- [x]Visualizes data in multiple graphs on Dashboard
-- [x]Uses an Express web server to handle server side routing and logic
-- [x]Developed using MERN stack.
-
+The full application is also hosted on Heroku found here: [https://ancient-hollows-84500.herokuapp.com/](Glycol Probe Application)
