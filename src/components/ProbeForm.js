@@ -50,6 +50,7 @@ const ProbeForm = ({
             name="lot#"
             value={newLot}
             onChange={handleLotChange}
+            maxLength="5"
             required
             placeholder="Enter Lot #"
           />
