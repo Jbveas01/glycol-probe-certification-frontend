@@ -4,12 +4,12 @@ const Probes = ({
   probeList,
   filter,
   handleChange,
-  tdClick,
+  selectId,
   handleCertChange,
   handleUpdateCert,
   updateCert,
   updateClass,
-  tdID,
+  selectedId,
   closeForm,
   editCertifcation,
 }) => {
@@ -24,12 +24,12 @@ const Probes = ({
       <ProbeTable
         probeList={probeList}
         filterFunction={(probe) => probe._id.includes(filter.toUpperCase())}
-        tdClick={tdClick}
+        selectId={selectId}
         handleCertChange={handleCertChange}
         handleUpdateCert={handleUpdateCert}
         updateCert={updateCert}
         updateClass={updateClass}
-        tdID={tdID}
+        selectedId={selectedId}
         closeForm={closeForm}
         tableClass={"table-serial"}
         editCertifcation={editCertifcation}

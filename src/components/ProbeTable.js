@@ -3,12 +3,12 @@ import "./ProbeTable.css";
 const ProbeTable = ({
   probeList,
   filterFunction,
-  tdClick,
+  selectId,
   handleUpdateCert,
   editCertifcation,
   updateCert,
   updateClass,
-  tdID,
+  selectedId,
   closeForm,
   tableClass,
 }) => {
@@ -21,7 +21,7 @@ const ProbeTable = ({
       <div className={updateClass}>
         <form onSubmit={editCertifcation}>
           <div className="update-div">
-            Update Certifcation Date for <b>{tdID}</b>
+            Update Certifcation Date for <b>{selectedId}</b>
           </div>
           <input
             onChange={handleUpdateCert}
@@ -59,7 +59,7 @@ const ProbeTable = ({
             return (
               <tbody key={_id}>
                 <tr>
-                  <td onClick={tdClick} className={tableClass}>
+                  <td onClick={selectId} className={tableClass}>
                     {_id}
                   </td>
                   <td>{lot}</td>

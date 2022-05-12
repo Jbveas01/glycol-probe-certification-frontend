@@ -1,11 +1,11 @@
+import "./App.css";
 import { useState, useEffect } from "react";
+import axios from "axios";
+import { Route, Routes } from "react-router-dom";
 import ProbeForm from "./components/ProbeForm";
 import Dashboard from "./views/Dashboard";
 import Navbar from "./components/Navbar";
-import axios from "axios";
 import Probes from "./views/Probes";
-import { Route, Routes } from "react-router-dom";
-import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 
@@ -13,51 +13,55 @@ function App() {
   const TOTALPROBES = 300;
   const BASEURL = "/api/probes";
 
-  const [newSerial, setSerial] = useState("");
-  const [newCert, setCert] = useState("");
-  const [newLot, setLot] = useState("");
-  const [newManuf, setManuf] = useState("");
+  const [newSerial, setNewSerial] = useState("");
+  const [newCert, setNewCert] = useState("");
+  const [newLot, setNewLot] = useState("");
+  const [newManuf, setNewManuf] = useState("");
   const [filter, setFilter] = useState("");
-  const [useTrigger, setTrigger] = useState(false);
+  const [refresh, setRefresh] = useState(false);
   const [probeList, setProbeList] = useState([]);
   const [deleteProbe, setDeleteProbe] = useState("");
   const [success, setSuccess] = useState("hidden");
   const [formError, setFormError] = useState("");
   const [certProbeCount, setCertProbeCount] = useState("");
   const [mobileNav, setMobileNav] = useState(true);
-  const [tdID, setTdID] = useState("");
+  const [selectedId, setSelectedId] = useState("");
   const [updateClass, setUpdateClass] = useState("hidden");
   const [updateCert, setUpdateCert] = useState("");
 
+  //Fetch probe list on load and when refresh is called
   useEffect(() => {
     axios.get(BASEURL).then((res) => {
       setProbeList(res.data);
       setCertProbeCount(res.data.length);
     });
-  }, [useTrigger]);
+  }, [refresh]);
 
-  ///Handle Form changes
-  const handleSerialChange = (event) => setSerial(event.target.value);
-  const handleCertChange = (event) => setCert(event.target.value);
-  const handleLotChange = (event) => setLot(event.target.value);
-  const handleManufChange = (event) => setManuf(event.target.value);
+  //Handle Form changes
+  const handleSerialChange = (event) => setNewSerial(event.target.value);
+  const handleCertChange = (event) => setNewCert(event.target.value);
+  const handleLotChange = (event) => setNewLot(event.target.value);
+  const handleManufChange = (event) => setNewManuf(event.target.value);
   const handleFilterChange = (event) => setFilter(event.target.value);
   const handleDeleteChange = (event) => setDeleteProbe(event.target.value);
-  const handleNavClick = () => setMobileNav(!mobileNav);
   const handleUpdateCert = (event) => setUpdateCert(event.target.value);
 
-  const tdClick = (event) => {
+  const handleNavClick = () => setMobileNav(!mobileNav);
+
+  //Handles selecting a probe on the probe table
+  const selectId = (event) => {
     event.preventDefault();
-    setTdID(event.target.innerHTML);
+    setSelectedId(event.target.innerHTML);
     setUpdateClass("update-form");
   };
 
+  //Closes update form
   const closeForm = (event) => {
     event.preventDefault();
     setUpdateClass("hidden");
   };
 
-  ///Handles Submitting the probe into the database
+  //Retrieves data from probe input form, creates new probe, and submits the probe into the database
   const submitProbe = async (event) => {
     event.preventDefault();
     const data = new FormData(event.target);
@@ -66,7 +70,7 @@ function App() {
       certificationDate: new Date(data.get("certDate")),
       lot: data.get("lot#"),
       manufactureDate: new Date(data.get("manufDate")),
-      ///Add 2 years to certifcation date for expiration date
+      //Add 2 years to certifcation date for expiration date
       expirationDate: new Date(
         new Date(data.get("certDate")).setFullYear(
           new Date(data.get("certDate")).getFullYear() + 2
@@ -76,13 +80,13 @@ function App() {
     await axios
       .post(BASEURL, probe)
       .then((res) => {
-        setSerial("");
-        setCert("");
-        setLot("");
-        setManuf("");
+        setNewSerial("");
+        setNewCert("");
+        setNewLot("");
+        setNewManuf("");
         setFormError(`Probe ${probe._id.toUpperCase()} added to the database!`);
         setSuccess("submit-success");
-        setTrigger(!useTrigger);
+        setRefresh(!refresh);
       })
       .catch((error) => {
         setSuccess("submit-error");
@@ -90,6 +94,7 @@ function App() {
       });
   };
 
+  //Handles deleting probes from database based on probe ID
   const submitDelete = async (event) => {
     event.preventDefault();
     if (!deleteProbe) {
@@ -99,7 +104,7 @@ function App() {
       await axios
         .delete(`${BASEURL}/${deleteProbe}`)
         .then((res) => {
-          setTrigger(!useTrigger);
+          setRefresh(!refresh);
           setDeleteProbe("");
           setFormError(`Probe ${deleteProbe} deleted successfully!`);
           setSuccess("submit-success");
@@ -111,9 +116,10 @@ function App() {
     }
   };
 
+  //Updates the database with the new probe certification date.
   const editCertifcation = async (event) => {
     event.preventDefault();
-    const id = tdID;
+    const id = selectedId;
     const updatedExpiration = new Date(
       new Date(updateCert).setFullYear(new Date(updateCert).getFullYear() + 2)
     );
@@ -132,7 +138,7 @@ function App() {
           })}`
         );
       });
-    setTrigger(!useTrigger);
+    setRefresh(!refresh);
     setUpdateClass("hidden");
   };
 
@@ -163,12 +169,12 @@ function App() {
                   probeList={probeList}
                   filter={filter}
                   handleChange={handleFilterChange}
-                  tdClick={tdClick}
+                  selectId={selectId}
                   handleCertChange={handleCertChange}
                   handleUpdateCert={handleUpdateCert}
                   updateCert={updateCert}
                   updateClass={updateClass}
-                  tdID={tdID}
+                  selectedId={selectedId}
                   closeForm={closeForm}
                   editCertifcation={editCertifcation}
                 />
@@ -192,18 +198,9 @@ function App() {
                 probeList={probeList}
                 certProbeCount={certProbeCount}
                 totalProbes={TOTALPROBES}
-                tdClick={tdClick}
-                handleCertChange={handleCertChange}
-                editCertifcation={editCertifcation}
-                newCert={newCert}
-                updateClass={updateClass}
-                tdID={tdID}
-                closeForm={closeForm}
               />
             }
           />
-          {/* <Route path="/shipping" element={<Shipping />} /> */}
-          {/* <Route path="/warehouse" element={<Warehouse />} /> */}
         </Routes>
       </div>
       <Footer />

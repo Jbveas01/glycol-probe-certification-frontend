@@ -3,18 +3,7 @@ import "./Dashboard.css";
 import Charts from "../components/Charts";
 import ProbeTable from "../components/ProbeTable";
 
-const Dashboard = ({
-  certProbeCount,
-  totalProbes,
-  probeList,
-  tdClick,
-  handleCertChange,
-  editCertifcation,
-  newCert,
-  updateClass,
-  tdID,
-  closeForm,
-}) => {
+const Dashboard = ({ certProbeCount, totalProbes, probeList }) => {
   return (
     <div className="dashboard">
       <h1 className="dashboard-title">Certification Dashboard</h1>
